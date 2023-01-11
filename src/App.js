@@ -1,24 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { Container } from '@mui/material';
+import SignIn from './components/singIn';
+import Form from './components/form';
+import ButtonAppBar from  './components/appBar'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function App() {
+const theme = createTheme();
+
+const App = () => {
+  const [isLogged, setisLogged] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleLogging = (data) => {
+    setisLogged(true)
+    setEmail(data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Container>
+          {!isLogged && 
+            <SignIn 
+              onloggingResult = {(data) => handleLogging(data)}
+            />
+          }
+          {isLogged && 
+            <> 
+              <ButtonAppBar email = {email}>
+              
+              </ButtonAppBar>
+              <Form>
+
+              </Form>
+            </>
+          }
+        </Container>
+      </ThemeProvider>
+    </>
   );
 }
 
