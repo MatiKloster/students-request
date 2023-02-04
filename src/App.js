@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
-import { Container } from '@mui/material';
-import SignIn from './components/singIn';
-import Form from './components/form';
-import ButtonAppBar from  './components/appBar'
+import { Box, Container } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import './App.css';
+import ButtonAppBar from './components/appBar';
+import Form from './components/form';
+import SignIn from './components/singIn';
 
 const theme = createTheme();
 
@@ -27,15 +26,11 @@ const App = () => {
               onloggingResult = {(data) => handleLogging(data)}
             />
           }
-          {isLogged && 
-            <> 
-              <ButtonAppBar email = {email}>
-              
-              </ButtonAppBar>
-              <Form>
-
-              </Form>
-            </>
+          {isLogged &&
+            <Box>
+              <ButtonAppBar email = {email}/>
+              <Form/>
+            </Box>
           }
         </Container>
       </ThemeProvider>

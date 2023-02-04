@@ -1,17 +1,19 @@
-import { TextField } from '@mui/material';
-import { Container } from '@mui/system';
+import { Box, TextField } from '@mui/material';
 import * as React from 'react';
 
 
 const Form = ({props}) => {
 
 
-    return(
-        <Container>
-            <TextField>
-                ASD
-            </TextField>
-        </Container>
-    );
+return(
+    <Box sx={{ flexGrow: 1 }}>
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Hello World"
+        />
+    </Box>
+);
 }
 export default Form;
