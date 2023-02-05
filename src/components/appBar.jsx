@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { styled } from "@mui/material";
+import { Button, styled } from "@mui/material";
 import * as React from 'react';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
