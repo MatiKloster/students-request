@@ -4,13 +4,15 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { styled } from "@mui/material";
 import * as React from 'react';
+
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 export default function ButtonAppBar({email}) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position='fixed'>
+    <Box>
+      <AppBar>
         <Toolbar>
           <IconButton
             size="large"
@@ -26,6 +28,7 @@ export default function ButtonAppBar({email}) {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Offset />
     </Box>
   );
 }
