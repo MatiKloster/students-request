@@ -31,11 +31,11 @@ const App = () => {
             <>
               <ButtonAppBar email={email}/>
               {pageForm && (
-                <FormPage props={undefined} />
+                <FormPage email={email} />
               )}
-              {!pageForm && 
+{/*               {!pageForm && 
                 <FormPage props={undefined} />
-              }
+              } */}
             </>
           )}
         </Container>
