@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./App.css";
 import ButtonAppBar from "./components/appBar";
 import FormPage from "./components/formPage";
+import UserRequests from "./components/userRequests";
 import SignIn from "./components/singIn";
 
 const theme = createTheme();
@@ -11,11 +12,15 @@ const theme = createTheme();
 const App = () => {
   const [isLogged, setisLogged] = useState(false);
   const [email, setEmail] = useState("");
-  const [pageForm, setpageStatus] = useState(true)
+  const [pageForm, setPageStatus] = useState(false)
 
   const handleLogging = (data) => {
     setisLogged(true);
     setEmail(data);
+  };
+
+  const handlePageChange = (data) => {
+    setPageStatus(data);
   };
 
   return (
@@ -29,13 +34,13 @@ const App = () => {
           )}
           {isLogged && (
             <>
-              <ButtonAppBar email={email}/>
+              <ButtonAppBar email={email} handlePageChange={(data) => handlePageChange(data)}/>
               {pageForm && (
                 <FormPage email={email} />
               )}
-{/*               {!pageForm && 
-                <FormPage props={undefined} />
-              } */}
+              {!pageForm && 
+                <UserRequests email={email} />
+              }
             </>
           )}
         </Container>

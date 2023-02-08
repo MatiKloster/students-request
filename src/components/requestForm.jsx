@@ -20,7 +20,6 @@ const FormRequest = ({handleSubmit, email}) => {
   const [body, setBody]=useState("");
   const [dni, setDni]=useState("");
   const [lu, setLu]=useState("");
-  const []=useState();
 
   React.useEffect(() => {
     fetch("http://localhost:5273/gateway/v1/dcic/info/majors")
