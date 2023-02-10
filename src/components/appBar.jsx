@@ -52,8 +52,8 @@ export default function ButtonAppBar({email, handlePageChange}) {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={handleMenuItemSelection(true)}>Enviar solicitud</MenuItem>
-            <MenuItem onClick={handleMenuItemSelection(false)}>Mis solicitudes</MenuItem>
+            <MenuItem onClick={() => handleMenuItemSelection(true)}>Enviar solicitud</MenuItem>
+            <MenuItem onClick={() => handleMenuItemSelection(false)}>Mis solicitudes</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
