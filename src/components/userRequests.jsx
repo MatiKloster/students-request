@@ -44,7 +44,10 @@ const UserRequests = ({user}) => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    {request.body}
+                    {"Solicitada el dia: " + new Date(request.startDate).toLocaleDateString()}
+                  </Typography>
+                  <Typography>
+                    {"Descripción: " + request.body}
                   </Typography>
                 </AccordionDetails>
               </Accordion>

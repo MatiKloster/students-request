@@ -73,7 +73,7 @@ const FormRequest = ({handleSubmit}) => {
   }
   return (
     <React.Fragment>
-      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 4 }, p: { xs: 2, md: 3 } }}>
         <Typography component="h1" variant="h5" align="center">
           Enviar solicitud
         </Typography>
