@@ -2,7 +2,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import { Box, Paper } from '@mui/material';
+import { Box, Container, Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
@@ -24,8 +24,8 @@ const UserRequests = ({user}) => {
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <React.Fragment>
-      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+    <Container component="main" maxWidth="xl" sx={{ mb: 4 }}>
+      <React.Fragment>
         <Typography component="h1" variant="h5" align="center">
           Solicitudes enviadas
         </Typography>
@@ -52,8 +52,8 @@ const UserRequests = ({user}) => {
           ))}
           </Grid>
         </Box>
-      </Paper>
-    </React.Fragment>
+      </React.Fragment>
+    </Container>
   );
 };
 

@@ -5,6 +5,7 @@ import ButtonAppBar from "./components/appBar";
 import FormPage from "./components/formPage";
 import UserRequests from "./components/userRequests";
 import SignIn from "./components/singIn";
+import BackGroundHeader from "./img/uns.jpg"
 const theme = createTheme();
 
 const App = () => {
@@ -31,15 +32,25 @@ const App = () => {
             </Grid>
           )}
             {isLogged && (
-            <div>
-              <ButtonAppBar user={user} handlePageChange={(data) => handlePageChange(data)}/>
-              {pageForm && (
-                <FormPage user={user} />
-              )}
-              {!pageForm && 
-                <UserRequests user={user} />
-              }
-            </div>
+              <>
+                <ButtonAppBar user={user} handlePageChange={(data) => handlePageChange(data)}/>
+                <div
+                  style={{
+                    backgroundImage: 'url('+BackGroundHeader+')',
+                    backgroundRepeat:"no-repeat",
+                    backgroundPosition: "1% 100%", 
+                    backgroundSize: "13%",
+                    backgroundAttachment: "fixed",
+                    height:"100vh"}}
+                >
+                  {pageForm && (
+                    <FormPage user={user} />
+                  )}
+                  {!pageForm && 
+                    <UserRequests user={user} />
+                  }
+                </div>
+              </>
           )}
         </div>
       </ThemeProvider>
