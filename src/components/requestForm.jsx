@@ -17,11 +17,11 @@ const FormRequest = ({handleSubmit}) => {
   const [planItems, setPlanItems] = useState([]);
   const [plan, setPlan] = useState("")
 
-  const [body, setBody]=useState("Test");
-  const [dni, setDni]=useState("39404170");
-  const [lu, setLu]=useState("110873");
-  const [name, setName]=useState("Matias Kloster");
-  const [tel, setTel]=useState("2984358469");
+  const [body, setBody]=useState("");
+  const [dni, setDni]=useState("");
+  const [lu, setLu]=useState("");
+  const [name, setName]=useState("");
+  const [tel, setTel]=useState("");
 
   React.useEffect(() => {
     fetch("http://localhost:5273/gateway/v1/dcic/info/majors")
@@ -77,7 +77,7 @@ const FormRequest = ({handleSubmit}) => {
         <Typography component="h1" variant="h5" align="center">
           Enviar solicitud
         </Typography>
-        <Box component="form" onSubmit={handlewe} noValidate sx={{ mt: 4 }}>
+        <Box component="form" onSubmit={handlewe} sx={{ mt: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <FormControl variant="outlined"  fullWidth >
