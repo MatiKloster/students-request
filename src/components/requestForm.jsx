@@ -9,7 +9,7 @@ import { useState } from 'react';
 // req type: http://localhost:5273/dcic/request/types
 // plan: http://localhost:5273/dcic/info/majors/id/plans
 
-const FormRequest = ({handleSubmit, email}) => {
+const FormRequest = ({handleSubmit}) => {
   const [majorItems, setmajorItems] = useState([]);
   const [typesItems, setTypesItems] = useState([]);
   const [majorId, setMajorId] = useState("");
@@ -17,9 +17,11 @@ const FormRequest = ({handleSubmit, email}) => {
   const [planItems, setPlanItems] = useState([]);
   const [plan, setPlan] = useState("")
 
-  const [body, setBody]=useState("");
-  const [dni, setDni]=useState("");
-  const [lu, setLu]=useState("");
+  const [body, setBody]=useState("Test");
+  const [dni, setDni]=useState("39404170");
+  const [lu, setLu]=useState("110873");
+  const [name, setName]=useState("Matias Kloster");
+  const [tel, setTel]=useState("2984358469");
 
   React.useEffect(() => {
     fetch("http://localhost:5273/gateway/v1/dcic/info/majors")
@@ -45,26 +47,8 @@ const FormRequest = ({handleSubmit, email}) => {
         });
   },[majorId]);// eslint-disable-line react-hooks/exhaustive-deps
 
-/*   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const dto = {
-      requesterEmail: props.email,
-      typeid: data.get('type'),
-      major: data.get('major'),
-      plan: data.get('plan'),
-      dni: data.get('DNI'),
-      lu: data.get('lu'),
-      body: data.get('body'),
-    }
-    console.log(dto);
-
-    props.callback(dto);
-  }; */
-
   const handlewe = (event) => {
     event.preventDefault();
-    console.log(event.currentTarget);
     let _datos = {
       typeid: typeId,
       major: majorId,
@@ -73,10 +57,20 @@ const FormRequest = ({handleSubmit, email}) => {
       lu: lu,
       body: body,
     }
-    console.log(JSON.stringify(_datos));
     handleSubmit(_datos);
+    clearFields();
   }
 
+  const clearFields = () => {
+    setMajorId("");
+    setTypeId("");
+    setPlan("");
+    setName("");
+    setBody("");
+    setTel("");
+    setLu("");
+    setDni("");
+  }
   return (
     <React.Fragment>
       <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
@@ -125,7 +119,7 @@ const FormRequest = ({handleSubmit, email}) => {
                   id="plan"
                   label="Plan"
                   value={plan}
-                  onChange={e =>{ console.log(e); setPlan(e.target.value)}}
+                  onChange={e =>{setPlan(e.target.value)}}
                   required
                 >
                   {planItems.map((item) =>
@@ -140,7 +134,9 @@ const FormRequest = ({handleSubmit, email}) => {
                 name="Nombre"
                 label="Nombre y apellido"
                 fullWidth
+                value={name}
                 variant="standard"
+                onChange={e => setName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -150,6 +146,7 @@ const FormRequest = ({handleSubmit, email}) => {
                 name="DNI"
                 label="DNI"
                 fullWidth
+                value={dni}
                 variant="standard"
                 onChange={e => setDni(e.target.value)}
               />
@@ -161,6 +158,7 @@ const FormRequest = ({handleSubmit, email}) => {
                 name="LU"
                 label="LU"
                 fullWidth
+                value={lu}
                 variant="standard"
                 onChange={e => setLu(e.target.value)}
               />
@@ -172,7 +170,9 @@ const FormRequest = ({handleSubmit, email}) => {
                 name="telefono"
                 label="Telefono"
                 fullWidth
+                value={tel}
                 variant="standard"
+                onChange={e => setTel(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -184,6 +184,7 @@ const FormRequest = ({handleSubmit, email}) => {
                 fullWidth
                 multiline
                 rows={6}
+                value={body}
                 variant="standard"
                 helperText="Describa su caso particular."
                 onChange={e => setBody(e.target.value)}

@@ -6,12 +6,12 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Button, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import * as React from 'react';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
-export default function ButtonAppBar({email, handlePageChange}) {
+export default function ButtonAppBar({user, handlePageChange}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -57,7 +57,7 @@ export default function ButtonAppBar({email, handlePageChange}) {
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
-            Bienvenido {email}
+            Bienvenido {user.name}
           </Typography>
         </Toolbar>
       </AppBar>

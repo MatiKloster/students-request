@@ -10,16 +10,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+const dummyUser = [
+  {email: "lucianobaschiera@gmail.com", userId: '7581b80c-9635-4fa6-b52a-b857ad276156', name:"Luciano"}, 
+  {email: 'matikloster2@gmail.com', userId: '1c690779-0858-4063-b6c8-47b4bd2db068', name:"Matias"}];
+
 const SignIn = ({onloggingResult}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-
-    onloggingResult(data.get('email'));
+    let user = dummyUser.find(x => x.email=== data.get('email'));
+    onloggingResult(user);
   };
 
   return (
@@ -37,7 +37,7 @@ const SignIn = ({onloggingResult}) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Ingresa
+            Ingresá a PASE
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField

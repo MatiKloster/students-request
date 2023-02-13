@@ -12,14 +12,11 @@ import { useState } from 'react';
 // req type: http://localhost:5273/dcic/request/types
 // plan: http://localhost:5273/dcic/info/majors/id/plans
 
-const dummyUser = [{email: "lucianobaschiera@gmail.com", userId: '7581b80c-9635-4fa6-b52a-b857ad276156'}, {email: 'matikloster2@gmail.com', userId: '7581b80c-9635-4fa6-b52a-b857ad276151'}];
-
-const UserRequests = ({email}) => {
+const UserRequests = ({user}) => {
   const [requests, setRequests] = useState([]);
-  const userId = dummyUser.find(x => x.email===email).userId;
 
   React.useEffect(() => {
-    fetch(`http://localhost:5273/gateway/v1/dcic/request/student/${userId}`)
+    fetch(`http://localhost:5273/gateway/v1/dcic/request/student/${user.userId}`)
     .then(response => response.json())
     .then(requests => {
       setRequests(requests);
@@ -35,8 +32,8 @@ const UserRequests = ({email}) => {
         <Box component="form" noValidate sx={{ mt: 4 }}>
           <Grid container spacing={3}>
           {requests.map((request) => (
-            <Grid item xs={12}>
-              <Accordion key={request.id}>
+            <Grid item xs={12} key={request.id}>
+              <Accordion>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
