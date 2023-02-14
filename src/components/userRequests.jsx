@@ -8,10 +8,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as React from 'react';
 import { useState } from 'react';
 
-// Major: http://localhost:5273/dcic/info/majors
-// req type: http://localhost:5273/dcic/request/types
-// plan: http://localhost:5273/dcic/info/majors/id/plans
-
 const UserRequests = ({user}) => {
   const [requests, setRequests] = useState([]);
 
@@ -24,14 +20,14 @@ const UserRequests = ({user}) => {
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Container component="main" maxWidth="xl" sx={{ mb: 4 }}>
+    <Paper variant="outlined" sx={{ my: { xs: 3, md: 4 }, p: { xs: 2, md: 3 } }}>
       <React.Fragment>
         <Typography component="h1" variant="h5" align="center">
           Solicitudes enviadas
         </Typography>
         <Box component="form" noValidate sx={{ mt: 4 }}>
           <Grid container spacing={3}>
-          {requests.map((request) => (
+          { requests.length ? requests.map((request) => (
             <Grid item xs={12} key={request.id}>
               <Accordion>
                 <AccordionSummary
@@ -52,11 +48,16 @@ const UserRequests = ({user}) => {
                 </AccordionDetails>
               </Accordion>
             </Grid>
-          ))}
+          ))
+          : 
+            <Grid item xs={12}>
+              <Typography variant="h6" sx={{ color: 'text.secondary' }} align="center">Aún no has creado ninguna solicitud</Typography>
+            </Grid>
+          }
           </Grid>
         </Box>
       </React.Fragment>
-    </Container>
+    </Paper>
   );
 };
 
