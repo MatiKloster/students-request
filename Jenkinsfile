@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = "https://index.docker.io/v2/"
         DOCKER_IMAGE_NAME = "lbaschiera/students-request"
-        DOCKER_IMAGE_TAG = "latest"
+        DOCKER_IMAGE_TAG = "${BRANCH == 'master' ? 'latest' : "${BRANCH.toLowerCase()}-${GIT_COMMIT.substring(0, Math.min(GIT_COMMIT.length(), 10))}" }"
         HELM_RELEASE_NAME = "students-request"
         HELM_CHART_PATH = "helm/students-request"
     }
@@ -26,6 +26,9 @@ pipeline {
         }
 
         stage('Update Helm Chart') {
+            when{ 
+                branch 'master';
+            }
             steps {
                 container('helm') {
                     script {
